@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GACIP · Control de Asistencia</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page">
+
+<header class="topbar" id="app-nav"></header>
+
+<main>
+  <div class="container">
+    <div class="page-head flex-between">
+      <div>
+        <h1>Control de Asistencia</h1>
+        <p>Escanea el código QR del voluntario para registrar su asistencia del día.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-3" id="stats-row" style="margin-bottom:22px;">
+      <div class="stat-card"><div class="stat-icon">✅</div><div><div class="stat-value" id="stat-today">—</div><div class="stat-label">Asistencias hoy</div></div></div>
+      <div class="stat-card"><div class="stat-icon">🧑‍🤝‍🧑</div><div><div class="stat-value" id="stat-total">—</div><div class="stat-label">Voluntarios activos</div></div></div>
+      <div class="stat-card"><div class="stat-icon">🏆</div><div><div class="stat-value" id="stat-points">—</div><div class="stat-label">Puntos acumulados</div></div></div>
+    </div>
+
+    <div class="scan-wrap">
+      <div class="card">
+        <h3>Cámara de escaneo</h3>
+        <p class="muted">Apunta la cámara al código QR del voluntario.</p>
+        <div id="qr-reader"></div>
+        <div class="spacer"></div>
+        <div class="chip-row">
+          <button class="btn btn-outline btn-sm" id="btn-restart">🔄 Reiniciar cámara</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Resultado</h3>
+        <div id="result-area">
+          <div class="empty-state">Esperando escaneo de un código QR…</div>
+        </div>
+
+        <div class="section-title">Últimos registros</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Voluntario</th><th>Hora</th></tr></thead>
+            <tbody id="recent-body"><tr><td colspan="2" class="muted">Sin registros aún.</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="assets/js/supabaseClient.js"></script>
+<script src="assets/js/session.js"></script>
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>

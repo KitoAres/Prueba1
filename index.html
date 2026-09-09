@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GACIP · Iniciar sesión</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo"><span class="dot"></span><h1>GACIP</h1></div>
+    <p class="auth-sub">Asistencia QR &amp; Liderazgo de Voluntarios</p>
+
+    <div class="error-box" id="error-box"></div>
+
+    <form id="login-form">
+      <div class="field">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" placeholder="tucorreo@gacip.org" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="btn-login">Ingresar</button>
+    </form>
+
+    <div class="hint-box">
+      Acceso de demostración inicial (sudo):<br>
+      <strong>sudo@gacip.org</strong> / <strong>Gacip#2026</strong><br>
+      Cámbialo apenas ingreses desde el Panel Sudo.
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/supabaseClient.js"></script>
+<script src="assets/js/session.js"></script>
+<script src="assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GACIP · Voluntarios</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page">
+
+<header class="topbar" id="app-nav"></header>
+
+<main>
+  <div class="container">
+    <div class="page-head flex-between">
+      <div>
+        <h1>Voluntarios</h1>
+        <p>Consulta puntos, asistencia y perfil de liderazgo de cada voluntario GACIP.</p>
+      </div>
+      <div>
+        <input type="search" id="search-box" placeholder="🔎 Buscar por nombre o correo…" style="min-width:240px;">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Voluntario</th><th>Correo</th><th>Puntos</th><th>Estado</th><th></th></tr>
+          </thead>
+          <tbody id="users-body"><tr><td colspan="5" class="muted">Cargando voluntarios…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal: perfil de liderazgo -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modal-title">Perfil de liderazgo</h3>
+      <button class="modal-close" id="modal-close">✕</button>
+    </div>
+
+    <div class="success-box" id="modal-success">Cambios guardados correctamente.</div>
+
+    <div class="section-title">Métricas cuantitativas (0 – 100)</div>
+    <div id="metric-sliders"></div>
+
+    <div class="section-title">Registro de mejoras y cambios</div>
+    <div class="field"><textarea id="f-improvements" rows="2"></textarea></div>
+
+    <div class="section-title">Áreas débiles a trabajar</div>
+    <div class="field"><textarea id="f-weaknesses" rows="2"></textarea></div>
+
+    <div class="section-title">Fortalezas consolidadas</div>
+    <div class="field"><textarea id="f-strengths" rows="2"></textarea></div>
+
+    <button class="btn btn-primary btn-block" id="btn-save-profile">Guardar cambios</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/supabaseClient.js"></script>
+<script src="assets/js/session.js"></script>
+<script src="assets/js/voluntarios.js"></script>
+</body>
+</html>
