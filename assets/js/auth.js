@@ -23,21 +23,32 @@
     btn.disabled = true;
     btn.textContent = 'Ingresando...';
 
-    const { data, error } = await supabase.rpc('login', {
-      p_email: email,
-      p_password: password
-    });
+    try {
+      const { data, error } = await supabase.rpc('login', {
+        p_email: email,
+        p_password: password
+      });
 
-    btn.disabled = false;
-    btn.textContent = 'Ingresar';
+      if (error) {
+        console.error('Error de login (Supabase):', error);
+        errorBox.textContent = 'Correo o contraseña incorrectos. Detalle: ' + error.message;
+        errorBox.style.display = 'block';
+        return;
+      }
 
-    if (error) {
-      errorBox.textContent = 'Correo o contraseña incorrectos.';
+      saveSession(data);
+      window.location.href = (data.role === 'usuario') ? 'perfil.html' : 'dashboard.html';
+
+    } catch (err) {
+      // Esto atrapa errores de red / conexión (URL mal copiada, sin internet, CORS, etc.)
+      console.error('Excepción inesperada al iniciar sesión:', err);
+      errorBox.textContent = 'No se pudo conectar con el servidor. Revisa tu conexión o la configuración de Supabase. (' + err.message + ')';
       errorBox.style.display = 'block';
-      return;
-    }
 
-    saveSession(data);
-    window.location.href = (data.role === 'usuario') ? 'perfil.html' : 'dashboard.html';
+    } finally {
+      // Esto SIEMPRE se ejecuta, pase lo que pase, así el botón nunca se queda colgado.
+      btn.disabled = false;
+      btn.textContent = 'Ingresar';
+    }
   });
 })();
